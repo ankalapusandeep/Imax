@@ -1,0 +1,60 @@
+.details-container{
+    padding:80px 8%;
+
+    display:grid;
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:50px;
+}
+
+.details-image img{
+    width:100%;
+    border-radius:15px;
+}
+
+.details-content h1{
+    font-size:42px;
+}
+
+.details-content h2{
+    color:#2563eb;
+    margin:20px 0;
+}
+
+.details-content p{
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.sizes{
+    display:flex;
+    gap:10px;
+    margin:20px 0;
+}
+
+.sizes button{
+    width:50px;
+    height:50px;
+
+    border:1px solid #ddd;
+    background:white;
+}
+
+.add-btn{
+    background:#2563eb;
+    color:white;
+
+    border:none;
+
+    padding:15px 30px;
+
+    border-radius:10px;
+
+    font-size:16px;
+}
+
+.active-size{
+    background:#2563eb !important;
+    color:white;
+}

@@ -54,6 +54,10 @@ function Cart() {
                   </h3>
 
                   <p>
+  Size: {item.selectedSize}
+</p>
+
+                  <p>
                     ₹{item.price}
                   </p>
                 </div>
