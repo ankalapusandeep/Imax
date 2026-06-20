@@ -1,39 +1,32 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-
-import { CartContext } from "../context/CartContext";
-
 import "../css/productCard.css";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    alert(`${product.name} added to cart`);
-  };
-
   return (
     <div className="product-card">
+      <div className="product-img">
+        <img src={product.image} alt={product.name} />
+        {product.badge && (
+          <div className="product-badge">{product.badge}</div>
+        )}
+      </div>
 
-      <Link
-  to={`/product/${product.id}`}
-  className="product-link"
->
-  <img
-    src={product.image}
-    alt={product.name}
-  />
-
-  <h3>{product.name}</h3>
-</Link>
-
-      <p>₹{product.price}</p>
-
-      <button onClick={handleAddToCart}>
-        Add To Cart
-      </button>
-
+      <div className="product-info">
+        <div className="product-brand">{product.brand || "IMAX"}</div>
+        <h3>{product.name}</h3>
+        <div className="product-price">
+          ₹{product.price.toLocaleString()}
+          {product.originalPrice && (
+            <span className="original-price">₹{product.originalPrice.toLocaleString()}</span>
+          )}
+        </div>
+        <button className="add-btn" onClick={() => addToCart(product)}>
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 }

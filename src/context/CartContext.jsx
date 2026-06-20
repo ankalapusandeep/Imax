@@ -1,63 +1,46 @@
-import {
-  createContext,
-  useState,
-  useEffect
-} from "react";
+import { createContext, useState } from "react";
 
-export const CartContext =
-  createContext();
+export const CartContext = createContext();
 
-function CartProvider({ children }) {
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
 
-  const [cart, setCart] =
-    useState(() => {
-
-      const savedCart =
-        localStorage.getItem("cart");
-
-      return savedCart
-        ? JSON.parse(savedCart)
-        : [];
+  function addToCart(product) {
+    setCart(prev => {
+      const existing = prev.find(item => item.id === product.id);
+      if (existing) {
+        return prev.map(item =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prev, { ...product, quantity: 1 }];
     });
+  }
 
-  useEffect(() => {
+  function removeFromCart(productId) {
+    setCart(prev => prev.filter(item => item.id !== productId));
+  }
 
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(cart)
-    );
-
-  }, [cart]);
-
-  const addToCart = (product) => {
-
+  function updateQuantity(productId, quantity) {
+    if (quantity <= 0) {
+      removeFromCart(productId);
+      return;
+    }
     setCart(prev =>
-      [...prev, product]
-    );
-
-  };
-
-  const removeFromCart = (id) => {
-
-    setCart(prev =>
-      prev.filter(
-        item => item.id !== id
+      prev.map(item =>
+        item.id === productId ? { ...item, quantity } : item
       )
     );
+  }
 
-  };
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        removeFromCart
-      }}
-    >
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, totalItems, totalPrice }}>
       {children}
     </CartContext.Provider>
   );
 }
-
-export default CartProvider;

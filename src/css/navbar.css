@@ -1,27 +1,103 @@
-.navbar {
-  height: 80px;
-  padding: 0 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  box-shadow: 0 2px 15px rgba(0,0,0,.08);
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --navy: #1B3A6B;
+  --gold: #C9A84C;
+  --gold-light: #F0E6C8;
+  --charcoal: #1A1A1A;
+  --off-white: #F8F7F4;
+  --light-gray: #E8E6E1;
+  --muted: #6B6860;
+  --white: #ffffff;
 }
 
-.logo {
-  font-size: 24px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid var(--light-gray);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 1.2rem;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #2563eb;
+  color: var(--navy);
+  letter-spacing: 0.04em;
+}
+
+.logo-accent {
+  color: var(--gold);
 }
 
 .nav-links {
-  display: flex;
-  gap: 30px;
   list-style: none;
+  display: flex;
+  gap: 2.5rem;
 }
 
-.nav-links a {
+.nav-links li a {
   text-decoration: none;
-  color: #111827;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.nav-links li a:hover {
+  color: var(--navy);
+  border-bottom-color: var(--gold);
+}
+
+.nav-cart {
+  background: var(--navy);
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 2px;
+  font-size: 0.75rem;
   font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--navy);
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-cart:hover {
+  background: transparent;
+  color: var(--navy);
 }

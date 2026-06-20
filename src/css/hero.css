@@ -1,43 +1,153 @@
-.hero{
-  background:
-    linear-gradient(
-      rgba(0,0,0,.5),
-      rgba(0,0,0,.5)
-    ),
-    url("../assets/images/hero-shoe.jpg");
+.hero {
+  position: relative;
+  min-height: 88vh;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.hero {
-  height: 80vh;
+.hero::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80') center / cover no-repeat;
+}
 
-  background: linear-gradient(
-    rgba(37,99,235,.8),
-    rgba(30,58,138,.8)
-  );
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 52%;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(to right, var(--off-white), transparent);
+}
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 3rem;
+  max-width: 520px;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 1.4rem;
+}
 
-  text-align: center;
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
 }
 
 .hero-content h1 {
-  color: white;
-  font-size: 70px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--charcoal);
+  margin-bottom: 1.2rem;
+}
+
+.hero-content h1 em {
+  font-style: italic;
+  color: var(--navy);
 }
 
 .hero-content p {
-  color: white;
-  font-size: 22px;
-  margin: 20px 0;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 2.2rem;
+  max-width: 380px;
 }
 
-.hero-content button {
-  background: white;
-  color: #2563eb;
-  border: none;
-  padding: 15px 35px;
-  border-radius: 10px;
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 36px;
+  font-size: 0.76rem;
   font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 2px solid var(--navy);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--navy);
+}
+
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: var(--charcoal);
+  padding: 14px 36px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 2px solid var(--light-gray);
+  transition: border-color 0.2s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--charcoal);
+}
+
+/* Trust Bar */
+.trust-bar {
+  position: relative;
+  z-index: 2;
+  background: var(--navy);
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 14px 3rem;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-item::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: 700;
 }

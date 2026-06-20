@@ -1,58 +1,86 @@
-.categories{
-    padding:80px 8%;
+.categories {
+  padding: 6rem 3rem;
+  background: #fff;
 }
 
-.categories h2{
-    text-align:center;
-    font-size:36px;
-    margin-bottom:50px;
-    color:#1e3a8a;
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
 }
 
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
+.section-label::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
 }
 
-.category-card{
-    position:relative;
-    height:350px;
-    overflow:hidden;
-    border-radius:15px;
-    cursor:pointer;
+.categories h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 3rem;
+  line-height: 1.2;
 }
 
-.category-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.5s;
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-.category-card:hover img{
-    transform:scale(1.1);
+.category-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+  display: block;
 }
 
-.overlay{
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-      transparent,
-      rgba(0,0,0,.7)
-    );
-
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    flex-direction:column;
-
-    padding-bottom:40px;
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.overlay h3{
-    color:white;
-    font-size:32px;
+.category-card:hover img {
+  transform: scale(1.05);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(27, 58, 107, 0.82) 0%, rgba(0, 0, 0, 0.1) 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.8rem;
+}
+
+.category-overlay h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.category-overlay span {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
 }
